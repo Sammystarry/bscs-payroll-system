@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->date('pay_date');
-            $table->enum('satus', ['Pending', 'Processing', 'Paid', 'Failed'])
+            $table->enum('status', ['Pending', 'Processing', 'Paid', 'Failed'])
             ->default('Pending');
             $table->timestamps();
         });
