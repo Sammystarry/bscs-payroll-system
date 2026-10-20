@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ContributionRate extends Model
-{
-
-    protected $fillable = [
+#[Fillable([
         'contribution_type_id',
         'rate'
-        ];
+        ])]
 
+class ContributionRate extends Model
+{
         use HasFactory;
 
     public function contributionType(): BelongsTo

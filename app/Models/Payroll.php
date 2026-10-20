@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Payroll extends Model
-{
-
-    protected $fillable = [
+#[Fillable([
         'employee_id',
         'payroll_period_id',
         'user_id',
@@ -19,8 +17,10 @@ class Payroll extends Model
         'total_deductions',
         'net_pay',
         'date_processed'
-        ];
+        ])]
 
+class Payroll extends Model
+{
         use HasFactory;
 
     public function employee(): BelongsTo

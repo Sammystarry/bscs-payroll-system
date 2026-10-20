@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Employee extends Model
-{
-
-    protected $fillable = [
+#[Fillable([
         'first_name',
         'last_name',
         'suffix',
@@ -23,8 +21,10 @@ class Employee extends Model
         'pagibig_no',
         'tin_no',
         'status'
-        ];
+        ])]
 
+class Employee extends Model
+{
         use HasFactory;
 
     public function position(): BelongsTo
