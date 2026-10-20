@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('deductions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Payroll:: class, 'payroll_id')
-                ->constrained('payrolls')->cascadeOnDelete();
-            $table->foreignIdFor(ContributionRate:: class, 'contribution_rate_id')
-                ->constrained('contribution_rates')->cascadeOnDelete();
+            $table->foreignId('payroll_id')->constrained('payrolls')->cascadeOnDelete();
+            $table->foreignId('contribution_rate_id')->constrained('contribution_rates')->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
             $table->timestamps();
         });

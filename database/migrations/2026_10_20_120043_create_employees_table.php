@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('suffix')->nullable();
-            $table->foreignIdFor(Position:: class, 'position_id')
-            ->constrained('position_id')->cascadeOnDelete();
-            $table->foreignIdFor(Department:: class, 'department_id')
-            ->constrained('department_id')->cascadeOnDelete();
+            $table->foreignId('position_id')->constrained('positions')->cascadeOnDelete();
+            $table->foreignId('department_id')->constrained('departments')->cascadeOnDelete();
             $table->date('date_hired');
             $table->decimal('daily_rate', 10, 2);
             $table->string('sss_no', 20)->nullable()->unique();
@@ -29,7 +27,7 @@ return new class extends Migration
             $table->string('pagibig_no', 20)->nullable()->unique();
             $table->string('tin_no', 20)->nullable()->unique();
             $table->enum('status', ['Casual', 'Regular', 'Permanent']);
-            $table->softDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

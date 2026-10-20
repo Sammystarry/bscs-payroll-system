@@ -14,8 +14,7 @@ return new class extends Migration
     {
         Schema::create('payslips', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Payroll:: class, 'payroll_id')->unique()
-                ->constrained('payrolls')->cascadeOnDelete();
+            $table->foreignId('payroll_id')->unique()->constrained('payrolls')->cascadeOnDelete();
             $table->timestamp('date_generated');
             $table->timestamps();
         });

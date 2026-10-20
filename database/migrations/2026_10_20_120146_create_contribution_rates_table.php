@@ -14,8 +14,7 @@ return new class extends Migration
     {
         Schema::create('contribution_rates', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(ContributionType:: class, 'contribution_type_id')
-                ->constrained('contribution_types')->cascadeOnDelete();
+            $table->foreignId('contribution_type_id')->constrained('contribution_types')->cascadeOnDelete();
             $table->decimal('rate', 10, 2);
             $table->timestamps();
         });

@@ -16,12 +16,9 @@ return new class extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Employee:: class, 'employee_id')
-                ->constrained('employees')->cascadeOnDelete();
-            $table->foreignIdFor(PayrollPeriod:: class, 'payroll_period_id')
-                ->constrained('payroll_periods')->cascadeOnDelete();
-            $table->foreignIdFor(User:: class, 'user_id')
-                ->constrained('users')->cascadetOnDelete();
+            $table->foreignId('employee_id')->constrained('employees')->cascadeOnDelete();
+            $table->foreignId('payroll_period_id')->constrained('payroll_periods')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->decimal('gross_pay', 10, 2);
             $table->decimal('total_deductions', 10, 2)->default(0);
             $table->decimal('net_pay', 10, 2);
