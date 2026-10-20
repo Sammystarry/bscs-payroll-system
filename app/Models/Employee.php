@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,7 +25,7 @@ class Employee extends Model
         'status'
         ];
 
-        use HasFactory, SoftDeletes;
+        use HasFactory;
 
     public function position(): BelongsTo
     {
@@ -45,7 +44,7 @@ class Employee extends Model
 
     public function payrolls(): HasMany
     {
-        return $this->hasMany(Payroll::class, 'employee_id', 'employee_id');
+        return $this->hasMany(Payroll::class, 'employee_id', 'id');
     }
 
 }
