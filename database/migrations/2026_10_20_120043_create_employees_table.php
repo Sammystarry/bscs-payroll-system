@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('pagibig_no', 20)->nullable()->unique();
             $table->string('tin_no', 20)->nullable()->unique();
             $table->enum('status', ['Casual', 'Regular', 'Permanent']);
+            $table->softDelete();
             $table->timestamps();
         });
     }
